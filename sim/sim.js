@@ -350,11 +350,10 @@ Sim.App.prototype.objectFromMouse = function(pagex, pagey)
     
     var vector = new THREE.Vector3( vpx, vpy, 0.5 );
 
-    this.projector.unprojectVector( vector, this.camera );
-	
-    var ray = new THREE.Ray( this.camera.position, vector.subSelf( this.camera.position ).normalize() );
+	vector.unproject( this.camera );
+    var ray = new THREE.Ray( this.camera.position, vector.sub( this.camera.position ).normalize() );
 
-    var intersects = ray.intersectScene( this.scene );
+    var intersects = ray.intersectObjects(  this.scene.children );
 	
     if ( intersects.length > 0 ) {    	
     	

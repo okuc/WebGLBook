@@ -46,31 +46,3 @@ Sim.PlaneDragger.prototype.drag = function(x, y)
 		this.publish("drag", this.dragHitPoint);
 	}			
 }
-
-Sim.PlaneDragger.prototype.endDrag = function(x, y)
-{
-	// Nothing to do, just here for completeness
-}
-
-Sim.PlaneDragger.prototype.getPlaneIntersection = function(x, y)
-{
-	var app = this.app;
-	
-	// Translate page coords to element coords
-	var offset = $(app.renderer.domElement).offset();	
-	var eltx = x - offset.left;
-	var elty = y - offset.top;
-	
-	// Translate client coords into viewport x,y
-	var vpx = ( eltx / app.container.offsetWidth ) * 2 - 1;
-	var vpy = - ( elty / app.container.offsetHeight ) * 2 + 1;
-	
-	var vector = new THREE.Vector3( vpx, vpy, 0.5 );
-	
-	this.projector.unprojectVector( vector, app.camera );
-	
-	var ray = new THREE.Ray( app.camera.position, vector.subSelf( camera.position ).normalize() );
-	
-	return ray.intersectObject( this.dragPlane );
-}
-

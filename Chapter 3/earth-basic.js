@@ -32,9 +32,10 @@ Earth.prototype.init = function()
     // Create our Earth with nice texture
     var earthmap = "../images/earth_surface_2048.jpg";
     var geometry = new THREE.SphereGeometry(1, 32, 32);
-    var texture = THREE.ImageUtils.loadTexture(earthmap);
+    var loader = new THREE.TextureLoader();
+    var texture = loader.load(earthmap);
     var material = new THREE.MeshBasicMaterial( { map: texture } );
-    var mesh = new THREE.Mesh( geometry, material ); 
+    var mesh = new THREE.Mesh( geometry, material );
 
     // Let's work in the tilt
     mesh.rotation.x = Earth.TILT;

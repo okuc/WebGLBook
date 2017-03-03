@@ -10,20 +10,7 @@ EarthApp.prototype = new Sim.App();
 // Our custom initializer
 EarthApp.prototype.init = function(param)
 {
-	// Call superclass init code to set up scene, renderer, default camera
-	Sim.App.prototype.init.call(this, param);
-	
-    // Create the Earth and add it to our sim
-    var earth = new Earth();
-    earth.init();
-    this.addObject(earth);
-    
-    // Let there be light!
-    var sun = new Sun();
-    sun.init();
-    this.addObject(sun);
-
-}
+                 }
 
 // Custom Earth class
 Earth = function()

@@ -2418,7 +2418,7 @@ Sim.ColladaLoader = function () {
 
 									if ( image ) {
 
-										props['map'] = THREE.ImageUtils.loadTexture(baseUrl + image.init_from, undefined, textureLoadedCallback);
+										props['map'] = THREE.TextureLoader(baseUrl + image.init_from, undefined, textureLoadedCallback);
 										props['map'].wrapS = THREE.RepeatWrapping;
 										props['map'].wrapT = THREE.RepeatWrapping;
 										props['map'].repeat.x = 1;
